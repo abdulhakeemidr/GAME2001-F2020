@@ -56,6 +56,7 @@ private:
 };
 
 // Main
+/*
 int main()
 {
 	cout << "Template Example" << endl << endl;
@@ -76,4 +77,4 @@ int main()
 	cout << "Max (objects) = " << max_func(TemplateClass<int>(7), TemplateClass<int>(4)).GetVal();
 
 	return 0;
-}
+}*/
