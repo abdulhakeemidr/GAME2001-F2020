@@ -19,7 +19,7 @@ int main()
 
 	cout << "Ordered array contents: ";
 
-	for (int i = 0; i < array.GetSize(); i++)
+ 	for (int i = 0; i < array.GetSize(); i++)
 	{
 		cout << " " << array[i];
 	}

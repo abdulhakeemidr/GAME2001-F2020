@@ -17,7 +17,7 @@ void PrintNumReverse(int x)
 	PrintNumReverse(x - 1);
 }
 
-/*
+
 int main()
 {
 	cout << "Recursion Example" << endl;
@@ -26,4 +26,4 @@ int main()
 	// Call a recursive function
 	PrintNumReverse(3);
 	return 0;
-}*/
+}

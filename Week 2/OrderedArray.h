@@ -19,7 +19,7 @@ public:
 		}
 	}
 	// Destructor
-	~UnorderedArray()
+	~OrderedArray()
 	{
 		if (m_array != NULL)
 		{

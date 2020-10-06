@@ -83,6 +83,12 @@ public:
 		}
 		return -1;
 	}
+	// ------SORTING ALGORITHMS --------------
+	// Bubble Sort -- Big O = O(N^2)
+	void BubbleSort()
+	{
+
+	}
 	// Overload the [] operator
 	T& operator[](int index)
 	{
@@ -95,9 +101,9 @@ public:
 		m_numElements = 0;
 	}
 	// Gets and Sets
-	int GetSize() { return m_numElements; }
-	int GetMaxSize() { return m_maxSize; }
-	int GetGrowSize() { return m_growSize; }
+	int GetSize() return m_numElements;
+	int GetMaxSize() return m_maxSize;
+	int GetGrowSize() return m_growSize;
 
 	void SetGrowSize(int val)
 	{
@@ -115,7 +121,7 @@ private:
 		// Create the new array
 		T* temp = new T[m_maxSize + m_growSize];
 		assert(temp != NULL);
-		// Copy the contents of the original array to the new array
+		// Copy the contents of the original array (m_array) to the new array (temp)
 		memcpy(temp, m_array, sizeof(T) * m_maxSize);
 		// Delete the old array
 		delete[] m_array;

@@ -37,6 +37,7 @@ public:
 		}
 		int i, k;
 		// Step 1: Find the index to insert val
+		//			by finding the index of the value greater than val
 		for (i = 0; i < m_numElements; i++)
 		{
 			if (m_array[i] > val)
@@ -155,6 +156,7 @@ private:
 		}
 		T* temp = new T[m_maxSize + m_growSize];
 		assert(temp != NULL);
+		// Copy the values of the original array (m_array) to the new array (temp)
 		memcpy(temp, m_array, sizeof(T) * m_maxSize);
 		delete[] m_array;
 		m_array = temp;
