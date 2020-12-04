@@ -176,7 +176,7 @@ public:
 		T temp;
 		int i = 0;
 
-		for (k = 1; k < m_numElements; k++)
+		for (int k = 1; k < m_numElements; k++)
 		{
 			temp = m_array[k];
 			i = k;

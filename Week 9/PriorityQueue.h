@@ -19,6 +19,8 @@ public:
 
 		if (m_elements.GetSize() == 0)
 		{
+			// if the list is empty
+			// it creates a new node and pushes the value into it
 			m_elements.Push(val);
 		}
 		else

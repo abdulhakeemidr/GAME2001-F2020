@@ -1,6 +1,7 @@
 #pragma once
 #include "DoublyLinkedList.h"
 
+// Double ended Queue
 template<class T>
 class Deque
 {
@@ -21,6 +22,8 @@ public:
 	}
 	void pop_front()
 	{
+		// Pops out the last node to enter the list
+		// last node of the list is the root node
 		m_elements.Pop();
 	}
 	void push_back(T val)
@@ -32,6 +35,8 @@ public:
 	}
 	void pop_back()
 	{
+		// Pops out the first node to enter the list
+		// first node to enter the list is the  m_lastNode
 		m_elements.Pop_Front();
 	}
 	T& front()

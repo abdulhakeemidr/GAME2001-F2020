@@ -15,30 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="DoublyLinkedList.h">
+    <ClInclude Include="LinearProbing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Queue.h">
+    <ClInclude Include="DoubleHashing.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Deque.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PriorityQueueLinkedList.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PriorityQueue.h">
+    <ClInclude Include="SeperateChaining.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="PriorityQueueTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="DequeTest.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="QueueTest.cpp">
+    <ClCompile Include="LinearProbingDemo.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

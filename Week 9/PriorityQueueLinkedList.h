@@ -26,6 +26,7 @@ class LinkIterator
 {
 public:
 	friend class PriorityQueueLinkedList<T>; // New Addition
+	// Gives the iterator access to private members
 
 	LinkIterator()
 	{
@@ -156,7 +157,11 @@ public:
 		LinkNode<T>* node = new LinkNode<T>;
 		assert(node != NULL);
 
+		// Stores the new data into the new node
 		node->m_data = newData;
+		// Takes the new node and have its next pointer point to
+		// the node after the iterators current node
+		// i.e. begins the process of inserting after the current node of the iterator
 		node->m_next = it.m_node->m_next;
 		node->m_previous = it.m_node;
 

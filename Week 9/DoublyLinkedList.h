@@ -85,6 +85,7 @@ public:
 	}
 	bool isValid()
 	{
+		// Determines whether what iterator is pointing to a NULL node
 		return (m_node != NULL);
 	}
 private:

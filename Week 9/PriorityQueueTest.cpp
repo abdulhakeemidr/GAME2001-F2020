@@ -75,6 +75,10 @@ public:
 	}
 	bool operator>(NetworkMessage& m)
 	{
+		// Compares if the message instance on the left is less than
+		// the one on the right (m). That is, using the first < overload function
+		// Returns the opposite of the < overloaded function
+		// This makes it a > overloaded function
 		return !(*this < m);
 	}
 private:

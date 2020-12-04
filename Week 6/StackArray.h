@@ -2,6 +2,8 @@
 #include <cassert>
 #include "UnorderedArray.h"
 
+// This takes the functionality of the UnorderedArray (via an instance of UnorderedArray)
+// And uses it to build functionality of a Stack Array class
 template<class T>
 class Stack
 {

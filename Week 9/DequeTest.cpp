@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Queue.h"
+#include "Deque.h"
 using namespace std;
 
 int main()
@@ -8,26 +9,26 @@ int main()
 
 	// Create and populate our queue
 	const int SIZE = 5;
-	Queue<int> intQueue(SIZE);
-	//Deque<int> intQueue(SIZE);
+	//Queue<int> intQueue(SIZE);
+	Deque<int> intDeque(SIZE);
 
 	for (int i = 0; i < SIZE; i++)
 	{
-		intQueue.push(10 + i);
+		intDeque.push_front(10 + i);
 	}
 
-	cout << "Queue Contents (Size - " << intQueue.GetSize() << ") :";
-	while (intQueue.isEmpty() == false)
+	cout << "Queue Contents (Size - " << intDeque.GetSize() << ") :";
+	while (intDeque.isEmpty() == false)
 	{
-		// prints out the value of the first node to enter the list
-		// first node of the list is the bottom node of the list
-		cout << " " << intQueue.front();
-		intQueue.pop();
+		cout << " Front: " << intDeque.front();
+		cout << " Back: " << intDeque.back();
+		cout << endl;
+		intDeque.pop_front();
 	}
 
 	cout << endl << endl;
 
-	if (intQueue.isEmpty() == true)
+	if (intDeque.isEmpty() == true)
 	{
 		cout << "The int queue is empty " << endl << endl;
 	}

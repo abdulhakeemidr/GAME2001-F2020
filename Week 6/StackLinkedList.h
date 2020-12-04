@@ -20,6 +20,7 @@ public:
 	}
 	const T& top()
 	{
+		// Top is always the last node of the linked list container
 		LinkIterator<T> it;
 		it = m_container.Last();
 		// returns the data stored in the last Node of the iterator
