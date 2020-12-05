@@ -1,6 +1,7 @@
 #include <iostream>
-#include "LinearProbing.h"
-// #include "SeperateChaining.h"
+//#include "LinearProbing.h"
+//#include "DoubleHashing.h"
+#include "SeperateChaining.h"
 
 using namespace std;
 
@@ -30,7 +31,7 @@ private:
 
 int main()
 {
-	cout << "Linear Probing example" << endl << endl;
+	// cout << "Linear Probing example" << endl << endl;
 	// cout << "Separate Chaining example" << endl << endl;
 
 	// Create and fill a hash table

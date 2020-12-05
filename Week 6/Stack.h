@@ -65,22 +65,18 @@ public:
 	// Gets and Sets
 	int GetSize() { return m_top + 1; }
 	int GetMaxSize() { return m_size; }
-	bool isEmpty()
-	{
-		return (m_top == -1); // Is the stack empty?/are there no indices of stacks (first stack will be 0)
-	}
-	bool isFull()
-	{
-		return (m_top == m_size - 1); // Compare the index of the top of your stack to the size of the stack
-	}
+
+	// Is the stack empty?/are there no indices of stacks (first stack will be 0)
+	bool isEmpty() { return (m_top == -1); }
+
+	// Compare the index of the top of your stack to the size of the stack
+	bool isFull() { return (m_top == m_size - 1); }
 private:
 	// Expansion
 	bool Expand()
 	{
-		if (m_growSize <= 0)
-		{
-			return false;
-		}
+		if (m_growSize <= 0) { return false; }
+
 		// Create the new array
 		T* temp = new T[m_size + m_growSize];
 		assert(temp != NULL);

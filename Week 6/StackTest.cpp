@@ -1,14 +1,15 @@
 #include <iostream>
-#include "Stack.h"
+//#include "Stack.h"
 //#include "StackArray.h"
-//#include "StackLinkedList.h"
+#include "StackLinkedList.h"
 using namespace std;
 
 int main()
 {
 	cout << "Stack Linked List Example" << endl << endl;
 
-	Stack<int> sList(10);
+	//Stack<int> sList(10);
+	Stack<int> sList;
 
 	sList.push(101);
 	sList.push(501);

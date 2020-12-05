@@ -1,6 +1,8 @@
 #include <iostream>
 #include "DoubleEndedLinkedList.h"
 
+// Double Ended Linked List is a Doubly linked list where the m_root node comes after the m_lastNode
+
 using namespace std;
 /*
 int main()

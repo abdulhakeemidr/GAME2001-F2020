@@ -73,6 +73,7 @@ private:
 };
 
 // Double Ended Linked Lists allow you to push and pop nodes from the front and the back of the list
+// Double Ended Linked List is a Doubly linked list where the m_root node comes after the m_lastNode
 template <class T>
 class DoubleEndedLinkedList
 {

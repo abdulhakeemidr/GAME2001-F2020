@@ -113,11 +113,17 @@ public:
 
 		// Get the hash value
 		int hash = HashFunction(obj);
+		// Get the hash value but offset by 256 in calculations (see definition of HashFunction2() )
 		int step = HashFunction2(obj);
 
+		// Checks to see if there is a key already stored in there (i.e. if(it is NOT "") )
 		while (m_table[hash].GetKey() != "")
 		{
+			// This is the difference between Linear probing and double hashing
+			// whereas Linear Probing checks linearly (hash index jumps by 1 (hash+1) to the next memory address)
+			// This is the essence of double hashing (hash index jumps by another hash index value)
 			hash += step;
+			// Ensures the value of the hash doesn't go above the size of the table (m_size)
 			hash %= m_size;
 		}
 
@@ -146,7 +152,8 @@ public:
 				return;
 			}
 
-			// Double hashing
+			// Double hashing --> Jumps by another hash value to check the next hash value
+			// Linear Probing checks linearly (jumps by 1)
 			hash += step;
 			hash %= m_size;
 
@@ -163,6 +170,9 @@ public:
 		int step = HashFunction2(hashString);
 		int originalHash = hash;
 
+		// Find only checks to see if the original hash of the key (hashString) is empty
+		// Doesnt work well if there are two identical keys stored in the hashtable and the first is deleted
+		// Because it only checks if the first key is stored
 		while (m_table[hash].GetKey() != "")
 		{
 			if (m_table[hash].GetKey() == hashString)
@@ -175,17 +185,19 @@ public:
 				}
 			}
 
-			// Double hashing
+			// Double hashing --> Jumps by another hash value to check the next hash value
+			// whereas Linear Probing checks linearly (hash index jumps by 1 to the next memory address)
+			// This is the essence of double hashing (hash index jumps by another hash index value)
 			hash += step;
 			hash %= m_size;
 		}
 
 		return false;
 	}
-	int HashFunction(T& obj)
-	{
-		return HashFunction(obj.GetHashString());
-	}
+
+	// ---------------- Hashing Functions ------------------------------
+	int HashFunction(T& obj) { return HashFunction(obj.GetHashString()); }
+	
 	int HashFunction(const string& HashString)
 	{
 		int hash = 0;
@@ -198,6 +210,7 @@ public:
 
 		return hash % m_size;	// Constrain our hash value to 0 up to m_size
 	}
+
 	// ---------------- Double Hashing Functions -------------------------
 	int HashFunction2(T& obj)
 	{
@@ -209,10 +222,10 @@ public:
 
 		for (int i = 0; i < HashString.length(); i++)
 		{
-			hash = (hash * 256 + HashString[i]) % m_size;
+			hash = (hash * 256 + HashString[i]);
 		}
 
-		return hash;
+		return hash % m_size;
 	}
 	// ------------- End Double Hashing Functions ------------------------
 	int GetSize()

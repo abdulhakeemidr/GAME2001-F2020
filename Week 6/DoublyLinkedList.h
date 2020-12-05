@@ -94,10 +94,7 @@ public:
 	DoublyLinkedList() : m_size(0), m_root(0), m_lastNode(0) {}
 	~DoublyLinkedList()
 	{
-		while (m_root)
-		{
-			Pop();
-		}
+		while (m_root) { Pop(); }
 	}
 	// POSITIONING FUNCTIONS
 	// Begin() returns the address of the first node on the linked list

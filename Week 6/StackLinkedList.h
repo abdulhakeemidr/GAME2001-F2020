@@ -27,14 +27,8 @@ public:
 		return *it;
 	}
 	// -----------END STACK FUNCTIONS ----------
-	int GetSize()
-	{
-		return m_container.GetSize();
-	}
-	bool isEmpty()
-	{
-		return (m_container.GetSize()) == 0;
-	}
+	int GetSize() { return m_container.GetSize(); }
+	bool isEmpty() { return (m_container.GetSize()) == 0; }
 private:
 	DoublyLinkedList<T> m_container;
 };

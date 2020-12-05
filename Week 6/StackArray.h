@@ -42,7 +42,7 @@ public:
 		assert(m_container != NULL);
 		// Derefence our pointer to the UnorderedArray object (to get the object itself)
 		// Subtracts GetSize() (the size of array) - 1 to get the index of the top array
-		//Then use array notation to return the top element of the array
+		//Then use array notation to return the value at the top element of the array
 		return (*m_container)[m_container->GetSize() - 1];
 	}
 	//----------------END STACK FUNCTIONS-----------------//

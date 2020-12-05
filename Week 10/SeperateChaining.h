@@ -13,23 +13,10 @@ public:
 	~HashItem() { }
 
 	// Gets and sets
-	string GetKey()
-	{
-		return m_key;
-	}
-	void SetKey(string k)
-	{
-		m_key = k;
-	}
-
-	T GetObject()
-	{
-		return m_obj;
-	}
-	void SetObj(T obj)
-	{
-		m_obj = obj;
-	}
+	string GetKey() { return m_key; }
+	void SetKey(string k) { m_key = k; }
+	T GetObject() { return m_obj; }
+	void SetObj(T obj) { m_obj = obj; }
 
 	// Overload operator 
 	// Equivalence operator
@@ -64,6 +51,7 @@ public:
 		if (size > 0) // Input validation
 		{
 			m_size = GetNextPrimeNum(size);
+			// Creates an array of list instances called m_table
 			m_table = new list<HashItem<T>>[m_size];
 		}
 	}
@@ -89,6 +77,7 @@ private:
 
 		return true;
 	}
+
 	int GetNextPrimeNum(int val)
 	{
 		int i;
@@ -103,6 +92,7 @@ private:
 
 		return i;
 	}
+
 	// Public functions
 public:
 	// Insert
@@ -113,6 +103,8 @@ public:
 		item.SetObj(obj);
 
 		int hash = HashFunction(obj);
+		// list::push_back() is used to add a new element to an existing list container (instance)
+		// Adds a new element to that (hash) instance of the m_table list array
 		m_table[hash].push_back(item);
 	}
 	// Delete
@@ -126,12 +118,16 @@ public:
 
 		for (it = ptr->begin(); it != ptr->end(); it++)
 		{
-			// Check the key of the object the iterator is pointing to vs
-			// the key passed into the function (obj.GetHashString())
+			// Compares the key of the object the iterator is pointing to against
+			// the key of the "T" object passed into the function
 			if (it->GetKey() == obj.GetHashString())
 			{
-				// Found the item. Delete it.
+				// It erases the object inside the list instance that the iterator is pointing to
 				ptr->erase(it);
+				// It breaks out of the loop, leaving any other objects 
+				// with the same key inside that list instance
+				// removing the break; means that when you search for a key
+				// all objects inside a particular list instance with that key name will be deleted from the list
 				break;
 			}
 		}
@@ -158,10 +154,8 @@ public:
 
 		return false;
 	}
-	int HashFunction(T& obj)
-	{
-		return HashFunction(obj.GetHashString());
-	}
+	int HashFunction(T& obj) { return HashFunction(obj.GetHashString()); }
+
 	int HashFunction(const string& HashString)
 	{
 		int hash = 0;

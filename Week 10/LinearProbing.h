@@ -111,10 +111,13 @@ public:
 		int hash = HashFunction(obj);
 
 		// -------- LINEAR PROBING -------
+		// Checks to see if there is a key already stored in there (i.e. if(it is NOT "") )
 		while (m_table[hash].GetKey() != "")
 		{
-			// Something is there at m_table[hash]. Perform linear probing
+			// This is the essence of Linear Probing
+			// the hash Index value jumps linearly (adds 1) until it finds an empty hash Index memory address
 			hash++;
+			// Ensures the value of the hash doesn't go above the size of the table (m_size)
 			hash %= m_size;	// "Safe guard". Wrap around the front of the hash table if I reach the end
 		}
 
@@ -164,6 +167,9 @@ public:
 		int hash = HashFunction(hashString);
 		int originalHash = hash;
 
+		// Find only checks to see if the original hash of the key (hashString) is empty
+		// Doesnt work well if there are two identical keys stored in the hashtable and the first is deleted
+		// Because it only checks if the first key is stored
 		while (m_table[hash].GetKey() != "")
 		{
 			// Compare current hash value index to hash string parameter
