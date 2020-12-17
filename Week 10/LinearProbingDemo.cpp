@@ -1,7 +1,7 @@
 #include <iostream>
-//#include "LinearProbing.h"
+#include "LinearProbing.h"
 //#include "DoubleHashing.h"
-#include "SeperateChaining.h"
+//#include "SeperateChaining.h"
 
 using namespace std;
 

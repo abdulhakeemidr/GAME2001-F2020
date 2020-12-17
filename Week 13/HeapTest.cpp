@@ -19,7 +19,7 @@ int main()
 
 	 // When I pop, it should pop in the follow order:
 	 // 100 ,90, 70, 50, 40, 35, 20, 10
-
+	// returns the size of the vector stored in heap
 	 cout << "Size: " << heap.size() << endl << endl;
 
 	 while (heap.size() > 0)

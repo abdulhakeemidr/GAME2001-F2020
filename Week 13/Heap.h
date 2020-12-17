@@ -12,6 +12,8 @@ public:
 	// Allow minimum size to be specified
 	Heap(int minSize)
 	{
+		// reserve a size of the vector set when a Heap instance
+		// is initialized
 		m_heap.reserve(minSize);
 	}
 
@@ -23,12 +25,16 @@ public:
 		m_heap.push_back(key);
 
 		// Compare the inserted key with the parent node and swap if need be.
-		int index = (int)m_heap.size() - 1;		// Set "index" to point to the last element.
-		T temp = m_heap[index];					// Store a copy of the last element in temp
-		int parentIndex = (index - 1) / 2;		// Find the parent index of any child index
+		// size() returns number of elements inside a vector array
+		// Set "index" to point to the last element added to the vector array
+		int index = (int)m_heap.size() - 1;
+		// Store a copy of the last element in temp
+		T temp = m_heap[index];
+		// Find the parent index of any child index
+		int parentIndex = (index - 1) / 2;
 
-		// Execute until we find the best position for the inserted element, or the loop ends
-		// Swapping while we traverse upwards through the heap.
+		// checks if the current index is greater than 0 (vector not empty) and
+		// the new value inserted (temp) is greater than the 
 		while (index > 0 && temp >= m_heap[parentIndex])
 		{
 			// Bubbling up through the heap
@@ -110,5 +116,6 @@ public:
 	}
 
 private:
+	// storing a vector array of heap data of T data type
 	vector<T> m_heap;
 };
