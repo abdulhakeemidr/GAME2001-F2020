@@ -31,24 +31,35 @@ public:
 
 		cout << "Node: " << m_object << " destroyed" << endl;
 	}
-	void AddChild(Node* node)
+
+	// Adds a child to the node
+	Node* AddChild(Node* node)
 	{
-		// Check if the node has a child or not
+		// Check if there are no child nodes
 		if (m_child == NULL)
 		{
 			// No child node
+			// child node is added and referenced by
+			// the parent node's m_child pointer variable
 			m_child = node;
 		}
 		else
 		{
-			// This node has children already. Add as a sibling instead
+			// Since the child already exists, we add the new child
+			// to become the existing child's sibling node
+			// So it is next to the original child and still a child
+			// of the parent node
 			m_child->AddSibling(node);
 		}
+
+		return node;
 	}
-	void AddSibling(Node* node)
+	Node* AddSibling(Node* node)
 	{
+		// Temporary iterator created that points to child's next node
 		Node* ptr = m_next;
 
+		// if there is no next (no sibling node)
 		if (m_next == NULL)
 		{
 			// No more siblings. Add my node
@@ -57,7 +68,8 @@ public:
 		}
 		else
 		{
-			// Traversal across (potentially) multiple siblings
+			// "ptr" iterator moves across the siblings
+			// until it finds a sibling with no child node after
 			while (ptr->m_next != NULL)
 			{
 				ptr = ptr->m_next;
@@ -65,8 +77,12 @@ public:
 
 			// Add new sibling to the end of siblings
 			ptr->m_next = node;
+			// make the new sibling point to the last sibling with
+			// its prev pointer
 			node->m_prev = ptr;
 		}
+
+		return node;
 	}
 	// "Recursively" display each node of the tree
 	void DisplayTree()
@@ -77,13 +93,20 @@ public:
 		if (m_next != NULL)
 		{
 			cout << " ";
+			// displays the contents of the tree starting from the "m_next" node
+			// to that node's children and to the children's children
 			m_next->DisplayTree();
+			// This is a recursive loop
+			// displays all the m_next (all the sibling nodes) until the last sibling node
+			// and then moves on to display (starting from) the last siblings child nodes
 		}
 
 		// Does this node have children?
 		if (m_child != NULL)
 		{
 			cout << endl;
+			// displays the contents of the tree starting from the "m_child" node
+			// to that node's children and to the children's children
 			m_child->DisplayTree();
 		}
 	}
@@ -91,6 +114,7 @@ public:
 	bool Search(int value)
 	{
 		// Pseudo base-case
+		// Checks if current node has the object value
 		if (m_object == value)
 		{
 			// I found my node!
@@ -123,8 +147,8 @@ public:
 private:
 	int m_object; // The value stored in each node instance
 
-	// m_next are for sibling nodes
-	// m_prev are for parent nodes 
+	// m_next are for right side sibling nodes
+	// m_prev are for left side sibling nodes 
 	// m_child are for children nodes
 	Node* m_next, * m_prev, * m_child;
 };
@@ -141,7 +165,7 @@ int main(int args, char* arg[])
 	// Two seperate trees have been created
 
 	// a child node has been added to the root of the first tree (called "root")
-	root->AddChild(new Node(2));
+	root->AddChild(new Node(2))->AddChild(new Node(8));
 	// a child node has been added to the root of the second tree (called "subTree1")
 	subTree1->AddChild(new Node(5));
 	// a child node has been added to the root of the second tree (called "subTree1")
@@ -153,12 +177,16 @@ int main(int args, char* arg[])
 	root->AddChild(subTree1);
 
 	// another child node has been added to the root of the first tree ("node")
-	root->AddChild(new Node(4));
+	// Modified AddChild() function to return the node it added
+	// This allows me to follow up by adding a child node to the added child node
+	// Added 4 as a child to root node and 7 as a child to "4" new node
+	root->AddChild(new Node(4))->AddChild(new Node(7));
 	cout << endl;
 	// Display the tree...
 	cout << "Tree contents by level:" << endl;
-	// displays the contents of the tree starting from the parent 
-	// to the children and to the children's children
+
+	// displays the contents of the tree starting from the "root" node
+	// to that node's children and to the children's children
 	root->DisplayTree();
 	cout << endl << endl;
 	// Test searching...

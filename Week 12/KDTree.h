@@ -35,7 +35,7 @@ public:
     }
 
 private:
-    vector<T> m_key;
+    vector<T> m_key; // key stores the array of values in the node
     KdNode* m_left;
     KdNode* m_right;
 };
@@ -68,8 +68,9 @@ public:
             m_root = newNode;
             return;
         }
-
+        // currentNode iterator
         KdNode<T>* currentNode = m_root;
+        // currentNode's parent node
         KdNode<T>* parentNode = m_root;
         int level = 0;
 

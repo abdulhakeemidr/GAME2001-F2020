@@ -10,14 +10,14 @@ int main(int args, char** argc)
 
     BinaryTree<int> binaryTree;
 
-    binaryTree.push(20);
-    binaryTree.push(10);
-    binaryTree.push(12);
-    binaryTree.push(27);
-    binaryTree.push(9);
-    binaryTree.push(50);
-    binaryTree.push(33);
-    binaryTree.push(6);
+    binaryTree.push(20); //step 1 result -> root node of tree
+    binaryTree.push(10); //step 2 result -> left child of root node
+    binaryTree.push(12); //step 3 result -> right child of step 2 node
+    binaryTree.push(27); //step 4 result -> right child of root node
+    binaryTree.push(9);  //step 5 result -> left child of step 2 node
+    binaryTree.push(50); //step 6 result -> right child of step 4 node
+    binaryTree.push(33); //step 7 result -> left child of step 6 node
+    binaryTree.push(6);  //step 8 result -> left child of step 5 node
 
     binaryTree.remove(27);
 

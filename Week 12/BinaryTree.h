@@ -74,10 +74,13 @@ public:
 		else
 		{
 			// Root exists. Traverse down the tree
+			// parentNode is currentNode's parent iterator
 			Node<T>* parentNode = NULL;
+			// CurrentNode is an iterator
 			Node<T>* currentNode = m_root;
 
 			// Traversal
+			// Infinite loop
 			while (1)
 			{
 				parentNode = currentNode;
@@ -86,33 +89,39 @@ public:
 				// IN THIS IMPLEMENTATION...no duplicates allowed.
 				if (key == currentNode->GetKey())
 				{
-					// Duplicate found! Delete newNode
+					// newNode is discarded because node with key value already exists
 					delete newNode;
 					return false;
 				}
 
-				// Do I traverse left or right?
+				// Is the key (new value) smaller than the node currentNode points to
 				if (key < currentNode->GetKey())
 				{
-					// Go left
+					// Go to the current node's left child
 					currentNode = currentNode->m_left;
 
+					// check if the current node's left child is empty
 					if (currentNode == NULL)
 					{
 						// This is where the newNode must go
+						// new leaf nodes are always placed on the left side
 						parentNode->m_left = newNode;
+						// or currentNode = newNode does the same thing
 						return true;
 					}
 				}
 				else
 				{
-					// Go right
+					// If currentNode is not empty and new value is greater than
+					// the currentNode's value, we go to the currentNode's right child
 					currentNode = currentNode->m_right;
 
+					// if the right of the parentNode (currentNode) is empty
 					if (currentNode == NULL)
 					{
-						// This is where the newNode must go
+						// This is where the newNode must go if parentNode is less than newNode
 						parentNode->m_right = newNode;
+						// or currentNode = newNode does the same thing
 						return true;
 					}
 				}
@@ -171,25 +180,36 @@ public:
 			return;
 		}
 
+		// iterator node's parent
 		Node<T>* parent = m_root;
+		// iterator node
 		Node<T>* node = m_root;
 		bool isLeftNode = false;
 
-		// Traverse and find the key to be removed
+		// while the current Node (iterator) is not the node with
+		// the key you are looking for
 		while (node->GetKey() != key)
 		{
+			// set the iterator node's parent to point to
+			// same place as current Node iterator
 			parent = node;
 
-			// Left vs right
+			// If key you are looking for is less than the key of the
+			// node currentiterator points to
 			if (key < node->GetKey())
 			{
-				// Left
+				// go to the left side as node's with keys smaller than currentNode
+				// are placed to the left of the currentNode
 				node = node->m_left;
+				// current iterator becomes the left of the parent iterator
 				isLeftNode = true;
 			}
 			else
 			{
+				// if key you are looking for is greater than the key of the node
+				// current iterator points to, go to the right side
 				node = node->m_right;
+				// current iterator becomes the right of the parent iterator
 				isLeftNode = false;
 			}
 
